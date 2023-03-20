@@ -1,15 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { AppLayoutComponent } from './layout/app.layout.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: AppLayoutComponent,
-    children: [
-      {path: '', component: DashboardComponent}
-    ]
+    loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule)
   }
 ];
 
